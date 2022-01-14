@@ -167,4 +167,4 @@ const bookInfo: BookInfo = {
 
 console.log('bookInfo: ',bookInfo);
 
-//Exclude<UnionType, ExcludedMembers> --> ?
+//Parameters<Type --> ?
