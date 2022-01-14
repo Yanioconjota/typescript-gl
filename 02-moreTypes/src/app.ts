@@ -16,7 +16,7 @@ const oe1: OElevatedEmployee = {
   startDate: new Date()
 };
 
-console.log(oe1);
+console.log('oe1: ', oe1);
 
 //Intersection Type --> Shorthand del código anterior
 
@@ -38,7 +38,7 @@ const e1: ElevatedEmployee = {
   startDate: new Date()
 };
 
-console.log(e1);
+console.log('e1: ', e1);
 
 type Combinable = string | number; //Union: uno u otro
 type Numeric = Combinable | number; //Union: uno u otro
@@ -72,8 +72,8 @@ const todo2 = updateTodo(todo1, {
 
 const todo3 = updateTodo(todo2, {title: 'Fart in public'});
 
-console.log(todo2);
-console.log(todo3);
+console.log('todo2: ',todo2);
+console.log('todo3: ',todo3);
 
 //Required<Type> --> Al contrario de Partial construye un tipo cuyas propiedades son todas requeridas
 
@@ -137,4 +137,34 @@ const msg1: MessagePreview = {
   sent: true
 };
 
-console.log(msg1);
+console.log('msg1: ',msg1);
+
+//Omit<Type, Keys> --> Construye un tipo con propiedades de otro tipo, omitiendo 'keys' selecccionadas (string literal o union string literals)
+
+interface Book {
+  title: string;
+  description: string;
+  completed: boolean;
+  createdAt: number;
+}
+
+type BookPreview = Omit<Book, 'description'>;
+
+const bookPreview: BookPreview = {
+  title: 'Understanding something',
+  completed: true,
+  createdAt: 1615544252770
+};
+
+console.log('bookPreview: ' ,bookPreview)
+
+type BookInfo = Omit<Book, 'completed' | 'createdAt'>;
+
+const bookInfo: BookInfo = {
+  title: 'Some random book title',
+  description: 'About something cool'
+};
+
+console.log('bookInfo: ',bookInfo);
+
+//Exclude<UnionType, ExcludedMembers> --> ?
